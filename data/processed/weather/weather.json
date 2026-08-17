@@ -1,0 +1,47 @@
+{
+    "farm_id": "FARM_001",
+    "location": {
+        "latitude": 23.07471394500561,
+        "longitude": 76.86331770482602,
+        "city": "Ashta",
+        "country": "IN"
+    },
+    "timestamp": 1786948903,
+    "timezone_offset_seconds": 19800,
+    "weather": {
+        "condition": "Rain",
+        "description": "light rain",
+        "icon": "10d"
+    },
+    "temperature": {
+        "current_celsius": 25.41,
+        "feels_like_celsius": 26.28,
+        "minimum_celsius": 25.41,
+        "maximum_celsius": 25.41
+    },
+    "atmosphere": {
+        "pressure_hpa": 1007,
+        "humidity_percent": 87,
+        "visibility_meters": 10000
+    },
+    "wind": {
+        "speed_mps": 5.82,
+        "direction_degrees": 261,
+        "gust_mps": 8.05
+    },
+    "clouds": {
+        "coverage_percent": 96
+    },
+    "rain": {
+        "last_1_hour_mm": 0.18,
+        "last_3_hours_mm": 0
+    },
+    "sun": {
+        "sunrise": 1786926578,
+        "sunset": 1786973046
+    },
+    "source": {
+        "provider": "OpenWeather",
+        "api": "Current Weather API"
+    }
+}
