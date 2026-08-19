@@ -1,6 +1,7 @@
 import os
 import json
 import requests
+import matplotlib.pyplot as plt
 
 from dotenv import load_dotenv
 

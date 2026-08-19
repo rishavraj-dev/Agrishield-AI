@@ -5,3 +5,5 @@ rasterio
 matplotlib
 shapely
 pyproj
+flask
+flask-cors

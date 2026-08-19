@@ -115,7 +115,7 @@ def geodesic_metrics(points):
     }
 
 
-def draw_farm(points, polygon):
+def draw_farm(points, polygon, show=True):
     lons = [lon for lat, lon in points]
     lats = [lat for lat, lon in points]
 
@@ -155,7 +155,11 @@ def draw_farm(points, polygon):
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     plt.savefig(MAP_FILE, dpi=200, bbox_inches="tight")
-    plt.show()
+    
+    if show:
+        plt.show()
+    
+    plt.close()
 
 
 def save_farm(farm_id, points, polygon, metrics):
@@ -209,6 +213,34 @@ def save_farm(farm_id, points, polygon, metrics):
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(farm_data, f, indent=4)
 
+    return farm_data
+
+
+def process_farm(points, farm_id="FARM_001"):
+    """
+    Process farm points (list of (lat, lon) tuples) and save them.
+    Returns farm_data dict if successful, or raises ValueError.
+    """
+    if len(points) < 3:
+        raise ValueError("A farm polygon requires at least 3 points.")
+
+    polygon = create_polygon(points)
+
+    if not polygon.is_valid:
+        raise ValueError("Invalid polygon. Boundary points may cross.")
+
+    if polygon.area == 0:
+        raise ValueError("Farm area is zero.")
+
+    metrics = geodesic_metrics(points)
+    farm_data = save_farm(
+        farm_id,
+        points,
+        polygon,
+        metrics,
+    )
+
+    draw_farm(points, polygon, show=False)
     return farm_data
 
 

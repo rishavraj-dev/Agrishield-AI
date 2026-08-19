@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriShield - Farm Registration</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Leaflet Draw CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+    
+    <!-- Leaflet Geocoder CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo-container">
+                <div class="logo-icon">🌿</div>
+                <h1>AgriShield</h1>
+            </div>
+            <p class="subtitle">Interactive Farm Registration</p>
+        </header>
+
+        <main class="main-content">
+            <div class="controls-panel">
+                <div class="panel-section">
+                    <h2>Farm Details</h2>
+                    <div class="form-group">
+                        <label for="farmId">Farm ID</label>
+                        <input type="text" id="farmId" placeholder="e.g., FARM_001" class="modern-input">
+                    </div>
+                </div>
+                
+                <div class="panel-section">
+                    <h2>Instructions</h2>
+                    <ul class="instructions-list">
+                        <li><span class="icon">🗺️</span> Use the polygon tool on the left of the map to draw your farm boundary.</li>
+                        <li><span class="icon">📍</span> Click on the map to add points (minimum 3 points).</li>
+                        <li><span class="icon">✅</span> Click on the first point to finish the polygon.</li>
+                        <li><span class="icon">🚀</span> Click "Register Farm" below to save and analyze.</li>
+                    </ul>
+                </div>
+
+                <div class="panel-section action-section">
+                    <button id="registerBtn" class="primary-btn" disabled>Register Farm</button>
+                </div>
+                
+                <div id="resultsPanel" class="panel-section results-section hidden">
+                    <h2>Analysis Results</h2>
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <span class="result-label">Area (Hectares)</span>
+                            <span class="result-value" id="resHectares">-</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="result-label">Area (Acres)</span>
+                            <span class="result-value" id="resAcres">-</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="result-label">Perimeter (m)</span>
+                            <span class="result-value" id="resPerimeter">-</span>
+                        </div>
+                        <div class="result-card full-width">
+                            <span class="result-label">Centroid</span>
+                            <span class="result-value small-text" id="resCentroid">-</span>
+                        </div>
+                    </div>
+                    
+                    <div class="result-image-container" style="margin-top: 1.5rem; text-align: center;">
+                        <h3 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-main);">Generated Boundary Map</h3>
+                        <img id="generatedMapImage" src="" alt="Generated Farm Boundary" style="max-width: 100%; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); display: none;">
+                    </div>
+
+                    <div class="success-message">
+                        Farm data saved successfully to <br><code>data/processed/farm/farm.json</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <div id="map"></div>
+                <div id="loadingOverlay" class="loading-overlay hidden">
+                    <div class="spinner"></div>
+                    <p>Processing farm data...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Leaflet Draw JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <!-- Leaflet Geocoder JS -->
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
