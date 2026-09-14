@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-background: #fbfdf9;
+    --color-surface: #ffffff;
+    --color-surface-dim: #f4f6f2;
+    --color-surface-container: #ffffff;
+    --color-surface-container-low: #f7faf5;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-container-high: #eef3eb;
+    --color-surface-container-highest: #e3ece0;
+    
+    /* Farm green palette */
+    --color-primary: #15803d; /* Lush green */
+    --color-primary-container: #dcfce7;
+    --color-on-primary: #ffffff;
+    --color-on-primary-container: #14532d;
+    --color-surface-tint: #16a34a;
+
+    /* Harvest Gold / Amber */
+    --color-secondary: #d97706;
+    --color-secondary-container: #fef3c7;
+    --color-on-secondary: #ffffff;
+    --color-on-secondary-container: #78350f;
+
+    /* Sky / Satellite Blue */
+    --color-tertiary: #0284c7;
+    --color-tertiary-container: #e0f2fe;
+    --color-on-tertiary: #ffffff;
+    --color-on-tertiary-container: #0369a1;
+
+    /* Neutrals & Text */
+    --color-on-background: #0f172a;
+    --color-on-surface: #1e293b;
+    --color-on-surface-variant: #475569;
+    --color-outline: #cbd5e1;
+    --color-outline-variant: #e2e8f0;
+
+    /* Alerts */
+    --color-error: #dc2626;
+    --color-error-container: #fee2e2;
+    --color-on-error: #ffffff;
+    --color-on-error-container: #991b1b;
+  }
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Farm-themed custom utilities */
+.farm-gradient-hero {
+  background: radial-gradient(circle at top right, rgba(34, 197, 94, 0.12), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(217, 119, 6, 0.08), transparent 35%),
+              linear-gradient(180deg, #ffffff 0%, #fbfdf9 100%);
+}
+
+.farm-card {
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 20px -2px rgba(22, 101, 52, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.farm-card:hover {
+  border-color: rgba(34, 197, 94, 0.3);
+  box-shadow: 0 10px 25px -3px rgba(22, 101, 52, 0.09), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+}
+
+.badge-green {
+  background-color: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.badge-amber {
+  background-color: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.badge-blue {
+  background-color: #f0f9ff;
+  color: #075985;
+  border: 1px solid #bae6fd;
+}
